@@ -30,7 +30,7 @@ group :development, :test do
 
   gem "rubocop-rails-omakase", require: false
 end
-group :production do
+group :production, :test do
   gem 'pg', '~> 1.5', '>= 1.5.9'
 end
 group :development do
