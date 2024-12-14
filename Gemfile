@@ -23,6 +23,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 group :development, :test do
+  gem "sqlite3", ">= 2.1"
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   gem "brakeman", require: false
