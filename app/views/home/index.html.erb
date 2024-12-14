@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle, #1a1a1a, #000000);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+      
+        /* Message Styles */
+        .message-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(0, 0, 255, 0.6);
+            z-index: 10;
+        }
+
+        .message {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #ff7f50, #00bfff, #ff6347, #ff1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glowingText 2s infinite ease-in-out;
+            letter-spacing: 3px;
+        }
+
+        /* Text Glow Animation */
+        @keyframes glowingText {
+            0%, 100% {
+                text-shadow: 0 0 20px #ff7f50, 0 0 40px #ff1493, 0 0 60px #00bfff;
+            }
+            50% {
+                text-shadow: 0 0 30px #ff6347, 0 0 50px #ff7f50, 0 0 80px #ff1493;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .message {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+            .message-wrapper {
+                top: 55%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .message {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+            .message-wrapper {
+                top: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    
+    
+    <!-- Dynamic Message -->
+    <div class="message-wrapper">
+        <% if user_signed_in? %>
+            <div class="message">
+                You are our <%= current_user.id %> user ever!
+            </div>
+        <% else %>
+            <div class="message">
+                Please sign in!
+            </div>
+        <% end %>
+    </div>
+</body>
+</html>

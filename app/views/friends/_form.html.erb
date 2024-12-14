@@ -1,0 +1,48 @@
+<%= form_with(model: friend, class: "p-4 bg-dark text-white rounded shadow") do |form| %>
+  <% if friend.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(friend.errors.count, "error") %> prohibited this friend from being saved:</h4>
+      <ul>
+        <% friend.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row g-3">
+    <!-- Name Field -->
+    <div class="col-md-6">
+      <%= form.label :name, "Name", class: "form-label" %>
+      <%= form.text_field :name, class: "form-control", placeholder:"Full Name" %>
+    </div>
+
+    <!-- Email Field -->
+    <div class="col-md-6">
+      <%= form.label :email, "Email", class: "form-label" %>
+      <%= form.text_field :email, class: "form-control" %>
+    </div>
+  </div>
+<br/>
+  <div class="row g-3">
+    <!-- Phone Field -->
+    <div class="col-md-6">
+      <%= form.label :phone, "Phone", class: "form-label" %>
+      <%= form.text_field :phone, class: "form-control" %>
+    </div>
+
+    <!-- Comments Field -->
+    <div class="col-md-6">
+      <%= form.label :comments, "Comments", class: "form-label" %>
+      <%= form.text_field :comments, class: "form-control" %>
+    </div>  
+      <div>
+      <%= form.number_field :user_id, class: "form-control", type: :hidden, value:current_user.id, id: :friend_user_id %>
+    </div>  
+  </div>
+
+  <!-- Submit Button -->
+  <div class="mt-4">
+    <%= form.submit "Save Friend", class: "btn btn-primary" %>
+  </div>
+<% end %>

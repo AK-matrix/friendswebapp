@@ -1,0 +1,153 @@
+<div class="login-container">
+  <h2 class="login-header">Log in</h2>
+
+  <div class="login-form-wrapper">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group">
+        <%= f.label :email, nil, class: "form-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, nil, class: "form-label" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-input" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="form-group remember-me">
+          <label class="form-checkbox">
+            <%= f.check_box :remember_me, {}, "1", "0" %> Remember me
+          </label>
+        </div>
+      <% end %>
+
+      <div class="form-actions">
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <div class="form-links">
+      <%= button_to "Forgot your password?", new_password_path(resource_name), method: :get, class: "btn btn-secondary" %>
+      <br/>
+      <%= button_to "Sign up", new_registration_path(resource_name), method: :get, class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* General Container */
+  .login-container {
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+  }
+
+  /* Header */
+  .login-header {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  /* Form Wrapper */
+  .login-form-wrapper {
+    width: 100%;
+    max-width: 400px;
+    background-color: #2c2c2c;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Form Group */
+  .form-group {
+    margin-bottom: 50px;
+  }
+
+  .form-label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFD700;
+    margin-bottom: 5px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background-color: #444;
+    color: #fff;
+    transition: border-color 0.3s;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+  }
+
+  /* Remember Me Checkbox */
+  .remember-me {
+    display: flex;
+    align-items: center;
+    color: #FFD700;
+  }
+
+  /* Buttons */
+  .form-actions, .form-links {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: #FFD700;
+    color: #333;
+  }
+
+  .btn-primary:hover {
+    background-color: #e6c200;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background-color: #1E90FF;
+    color: #fff;
+    margin-right: 10px;
+  }
+
+  .btn-secondary:hover {
+    background-color: #0078e6;
+    transform: translateY(-2px);
+  }
+
+  .btn-success {
+    background-color: #32CD32;
+    color: #fff;
+  }
+
+  .btn-success:hover {
+    background-color: #28a828;
+    transform: translateY(-2px);
+  }
+</style>

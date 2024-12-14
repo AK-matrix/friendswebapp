@@ -1,0 +1,62 @@
+<h2 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div style="margin-bottom: 15px;">
+    <%= f.label :email, nil, style: "display: block; font-weight: bold; font-size: 14px; color: #555;" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width: 100%; padding: 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div style="font-size: 14px; color: #555;">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div style="margin-bottom: 15px;">
+    <%= f.label :password, nil, style: "display: block; font-weight: bold; font-size: 14px; color: #555;" %> <i style="font-size: 12px; color: #888;">(leave blank if you don't want to change it)</i>
+    <%= f.password_field :password, autocomplete: "new-password", style: "width: 100%; padding: 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;" %>
+    <% if @minimum_password_length %>
+      <em style="font-size: 12px; color: #888;">(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <%= f.label :password_confirmation, nil, style: "display: block; font-weight: bold; font-size: 14px; color: #555;" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", style: "width: 100%; padding: 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;" %>
+  </div>
+
+  <div style="margin-bottom: 15px;">
+    <%= f.label :current_password, nil, style: "display: block; font-weight: bold; font-size: 14px; color: #555;" %> <i style="font-size: 12px; color: #888;">(we need your current password to confirm your changes)</i>
+    <%= f.password_field :current_password, autocomplete: "current-password", style: "width: 100%; padding: 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;" %>
+  </div>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <%= f.submit "Update", style: "background-color: #007BFF; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer;" %>
+  </div>
+<% end %>
+
+<h3 style="font-family: Arial, sans-serif; color: #333;">Cancel my account</h3>
+
+<div style="text-align: center; margin-top: 20px;">
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, style: "background-color: #FF6347; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 5px; cursor: pointer; margin-right: 10px;" %>
+  <%= button_to "Back", :back, method: :get, style: "background-color: #FFD700; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 5px; cursor: pointer;" %>
+</div>
+
+<h2 style="text-align: center; font-family: Arial, sans-serif; color: #333;">Forgot your password?</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div style="margin-bottom: 15px;">
+    <%= f.label :email, nil, style: "display: block; font-weight: bold; font-size: 14px; color: #555;" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width: 100%; padding: 10px; font-size: 14px; border: 1px solid #ccc; border-radius: 5px;" %>
+  </div>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <%= f.submit "Send me reset password instructions", style: "background-color: #007BFF; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer;" %>
+  </div>
+<% end %>
+
+<div style="text-align: center; margin-top: 20px;">
+  <%= button_to "Back", :back, method: :get, style: "background-color: #FFD700; color: white; border: none; padding: 10px 20px; font-size: 14px; border-radius: 5px; cursor: pointer;" %>
+</div>
